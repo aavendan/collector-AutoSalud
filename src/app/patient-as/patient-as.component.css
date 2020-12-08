@@ -1,0 +1,31 @@
+div.tests {
+  padding: 0 5% 5% 5%;
+}
+
+.form {
+  width: 100%;
+}
+
+.form-element {
+  padding-bottom: 3%;
+  width: 100%;
+  
+}
+
+.button {
+  margin-right: 2%;
+}
+
+.buttons {
+  text-align: center;
+}
+
+#save:enabled {
+  background-color: #23427C;
+}
+
+h2 {
+  text-align:center;
+  font-size: 2rem;
+  padding-top: 4%;
+}

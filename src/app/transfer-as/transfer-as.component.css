@@ -1,0 +1,30 @@
+table {
+  width: 100%;
+}
+
+div.tests {
+  padding: 0 2% 5% 2%;
+}
+
+h2 {
+  text-align:center;
+  font-size: 1.8rem;
+  padding-top: 4%;
+}
+
+#tableContainer {
+  margin-top: 2%;
+}
+
+mat-form-field {
+  width: 50%;
+}
+
+#buttonTransfer {
+  float: right;
+  clear: both;
+}
+
+.mat-column-select {
+  overflow: initial;
+}

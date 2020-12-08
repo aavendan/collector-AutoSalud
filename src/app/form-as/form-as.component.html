@@ -1,0 +1,30 @@
+<div class="container" *ngIf="!post; else forminfo" novalidate> 
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
+
+    <mat-form-field class="form-element">
+      <input matInput id="user" placeholder="Usuario" formControlName="user">
+    </mat-form-field>
+    <mat-form-field class="form-element">
+      <input matInput id="password" placeholder="Contraseña" type="password" formControlName="password">
+    </mat-form-field>
+
+    
+    <div class="form-element">
+      <button mat-button type="submit" class="button" [disabled]="!formGroup.valid">INGRESAR</button>
+    </div>
+
+  </form>
+  
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+    </mat-card-header>
+  </mat-card>
+  
+</div>
+
+<ng-template #forminfo>
+  <div class="container">
+    {{ post | json }}
+  </div>
+</ng-template>

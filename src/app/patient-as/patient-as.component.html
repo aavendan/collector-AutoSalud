@@ -1,0 +1,58 @@
+<h2> 
+  Paciente 
+</h2>
+
+<!-- {{action | titlecase}} -->
+<div class="tests">
+  
+  <div class="container" *ngIf="!post; else forminfo" novalidate> 
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
+
+      
+      <mat-form-field class="form-element">
+        <input matInput id="cardid" placeholder="Cédula del paciente" formControlName="cardid" type="tel" pattern="[0-9]{10}" [errorStateMatcher]="errorMatcher" >
+
+        <mat-error *ngIf="formGroup.hasError('CardID')">
+          La cédula debe contener 10 dígitos
+        </mat-error>
+
+      </mat-form-field>
+
+      <mat-form-field class="form-element">
+        <input matInput id="email" placeholder="Correo del paciente" formControlName="email" type="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [errorStateMatcher]="errorMatcher" >
+
+        <mat-error *ngIf="formGroup.hasError('Email')">
+          El formato del correo electrónico no es el correcto
+        </mat-error>
+
+      </mat-form-field>
+
+      
+      
+      <div class="form-element buttons">
+        
+       
+        <button mat-raised-button 
+        type="submit" 
+        id="save" 
+        class="button" 
+        [disabled]="!formGroup.valid" 
+        color="primary" 
+        (click)="search()">BUSCAR</button>
+
+        <button mat-raised-button type="submit" id="delete" class="button" color="warn" *ngIf="isRegister" (click)="registerPatient()">REGISTRAR</button>
+
+        <!--button mat-raised-button type="submit" id="delete" class="button" color="primary" *ngIf="isAddTest" (click)="addTest()">AGREGAR MUESTRA</button-->
+
+      </div>
+
+    </form>
+  </div>
+
+  <ng-template #forminfo>
+    <div class="container">
+      {{ post | json }}
+    </div>
+  </ng-template>
+
+</div>

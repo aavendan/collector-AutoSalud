@@ -1,0 +1,54 @@
+<h2> 
+   <span *ngIf="showAdd">Agregar</span>
+   <span *ngIf="!showAdd">Buscar</span>  
+   Muestras 
+</h2>
+<div class="tests">
+  
+  <mat-form-field 
+    [ngClass]="{'half-field' : showAdd, 'full-field': !showAdd}">
+    <mat-label>Ingrese el dato a buscar</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ingrese el dato">
+  </mat-form-field>
+  
+  <!--button id="buttonAdd" mat-fab color="primary">+</button-->
+
+  <button id="buttonAdd" mat-raised-button 
+      color="primary" 
+      [routerLink]="'/sample/add'"
+      *ngIf="showAdd">
+    Nueva
+  </button>
+  
+  <div id="tableContainer" class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+      <ng-container matColumnDef="code">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Código </th>
+        <td mat-cell *matCellDef="let element" [routerLink]="['/sample/show', element.code]"> {{element.code}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="cardid">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Cédula </th>
+        <td mat-cell *matCellDef="let element" [routerLink]="['/sample/show', element.code]"> {{element.cardid}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Fecha </th>
+        <td mat-cell *matCellDef="let element" [routerLink]="['/sample/show', element.code]"> {{element.date}} </td>
+      </ng-container>
+
+       <ng-container matColumnDef="reference">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Referencia </th>
+        <td mat-cell *matCellDef="let element" [routerLink]="['/sample/show', element.code]"> {{element.reference}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+    <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
+
+  </div>
+
+</div>

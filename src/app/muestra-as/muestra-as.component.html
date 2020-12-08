@@ -1,0 +1,57 @@
+<app-topbar-as [title]="'AutoSalud'"></app-topbar-as>
+<h2> 
+  <span *ngIf="!isDelete">Nueva</span>
+  Muestra 
+</h2>
+
+<!-- {{action | titlecase}} -->
+
+<div class="tests">
+  
+  <div class="container" *ngIf="!post; else forminfo" novalidate> 
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
+
+      <mat-form-field class="form-element">
+        <input matInput id="cardid" placeholder="Cédula del paciente" formControlName="cardid" type="tel" pattern="[0-9]{10}" [errorStateMatcher]="errorMatcher" [readonly]="hasCardID" >
+
+        <mat-error *ngIf="formGroup.hasError('CardID')">
+          La cédula debe contener 10 dígitos
+        </mat-error>
+
+      </mat-form-field>
+
+      <mat-form-field class="form-element">
+        <input matInput id="code" placeholder="Código de la muestra" formControlName="code">
+      </mat-form-field>
+
+      <mat-form-field class="form-element">
+        <input matInput id="reference" placeholder="Referencia" formControlName="reference" >
+      </mat-form-field>
+      
+      <div class="form-element buttons">
+        
+        <button mat-raised-button type="reset" class="button" [routerLink]="'/main'">CANCELAR</button>
+
+        <button mat-raised-button 
+        type="submit" 
+        id="save" 
+        class="button" 
+        [disabled]="!formGroup.valid" 
+        color="primary" 
+        (click)="save()">GUARDAR</button>
+
+        
+        <button mat-raised-button type="submit" id="delete" class="button" color="warn" *ngIf="isDelete" (click)="delete()">ELIMINAR</button>
+
+      </div>
+
+    </form>
+  </div>
+
+  <ng-template #forminfo>
+    <div class="container">
+      {{ post | json }}
+    </div>
+  </ng-template>
+
+</div>

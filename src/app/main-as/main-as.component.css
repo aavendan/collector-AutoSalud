@@ -1,0 +1,22 @@
+#bigcontainer {
+  box-sizing: border-box;
+  display: block;
+  height: 100%;
+}
+
+.downlabel {
+  font-size: 0.8rem;
+}
+
+/*.example-large-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}*/
+
+
+/*SET TABS TO BOTTOM*/
+.custom-tabs .mat-tab-body-wrapper {
+  height: 84vh;
+}

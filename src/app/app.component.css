@@ -1,0 +1,5 @@
+/*SET TABS TO BOTTOM*/
+/*https://stackoverflow.com/questions/53213555/mat-tab-body-wrapper-cannot-edit-css-angular*/
+:host {
+  height: 100vh;
+}
